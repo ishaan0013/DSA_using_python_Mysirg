@@ -81,14 +81,11 @@ class DLL:
                 self.start = None
             else:
                 key_node = self.Search(data)
-                temp = self.start
-                while temp.next.item is not data:
-                    temp = temp.next
                 if (key_node.next == None):
-                    temp.next = None
+                    key_node.prev.next = None
                 else:
-                    temp.next = key_node.next
-                    key_node.prev = temp
+                    key_node.prev.next = key_node.next
+                    key_node.next.prev = key_node.prev
 
     def Print_list(self):
         if (self.start == None):
