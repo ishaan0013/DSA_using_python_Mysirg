@@ -76,16 +76,17 @@ class DLL:
     def Delete_item(self, data):
         if (self.Search(data) == None):
             print("Item not in list or list is empty!")
+        elif (self.start.item == data and self.start.next == None):
+            self.start = None
         else:
-            if (self.start.item == data):
-                self.start = None
+            key_node = self.Search(data)
+            if (key_node.next is not None and key_node.prev == None):
+                self.start = key_node.next
+            elif (key_node.next == None):
+                key_node.prev.next = None
             else:
-                key_node = self.Search(data)
-                if (key_node.next == None):
-                    key_node.prev.next = None
-                else:
-                    key_node.prev.next = key_node.next
-                    key_node.next.prev = key_node.prev
+                key_node.prev.next = key_node.next
+                key_node.next.prev = key_node.prev
 
     def Print_list(self):
         if (self.start == None):
