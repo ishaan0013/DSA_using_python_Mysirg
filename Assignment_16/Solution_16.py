@@ -6,7 +6,7 @@ class priorityQueue:
         return (not self.lst)
 
     def Push(self, data, pri: int):
-        self.lst.insert(pri-1, data)
+        self.lst.insert(pri-1, (data, pri))
 
     def Pop(self):
         if not self.Is_empty():
@@ -24,4 +24,6 @@ myQueue.Push(13, 2)
 myQueue.Push(14, 1)
 myQueue.Push(15, 6)
 print(myQueue.Size())
+print(myQueue.Pop())
+print(myQueue.Pop())
 print(myQueue.Pop())
